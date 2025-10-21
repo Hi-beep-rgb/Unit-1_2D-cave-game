@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GolemScript : MonoBehaviour
@@ -8,6 +9,8 @@ public class GolemScript : MonoBehaviour
     public Animator anim;
     LayerMask groundLayerMask;
     BoxCollider2D bc;
+    public float hp;
+    GameObject GolemEnemy;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,7 +18,8 @@ public class GolemScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         groundLayerMask = LayerMask.GetMask("Ground");
-        xvel = 0.5f;
+        xvel = 1f;
+        hp = 100f;
     }
 
     // Update is called once per frame
@@ -58,6 +62,11 @@ public class GolemScript : MonoBehaviour
             {
                 xvel = -xvel;
             }
+        }
+
+        if (hp <= 0)
+        {
+            Destroy(GolemEnemy);
         }
     }
 

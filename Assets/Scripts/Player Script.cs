@@ -10,6 +10,8 @@ public class PlayerScript : MonoBehaviour
     HelperScript helper;
     LayerMask groundLayerMask;
     public GameObject weapon;
+    public float hp;
+    GameObject Player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,6 +19,7 @@ public class PlayerScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         groundLayerMask = LayerMask.GetMask("Ground");
         helper = gameObject.AddComponent<HelperScript>();
+        hp = 150;
     }
 
     // Update is called once per frame
@@ -41,7 +44,7 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
-            yvel = 6;
+            yvel = 5;
         }
 
         rb.linearVelocity = new Vector3(xvel, yvel, 0);
@@ -71,6 +74,11 @@ public class PlayerScript : MonoBehaviour
         if (xvel > 0)
         {
             helper.DoFlipObject(false);
+        }
+
+        if (hp <= 0)
+        {
+            Destroy(Player);
         }
     }
     public bool DoRayCollisionCheck()
@@ -123,11 +131,22 @@ public class PlayerScript : MonoBehaviour
             Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
             SpriteRenderer sr = arrow.GetComponent<SpriteRenderer>();
 
-            //setting the velocity of the projectile
-            rb.linearVelocity = new Vector2(-15, 0);
+            //if statment to flip the projectile of the player
+            if ( helper.IsFlipped() ==  true )
+            {
+                //setting the velocity of the projectile
+                rb.linearVelocity = new Vector2(-15, 0);
+
+            }
+            else
+            {
+                //setting the velocity of the projectile
+                rb.linearVelocity = new Vector2(15, 0);
+
+            }
 
             //setting the position close to the players position
-            rb.transform.position = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z + 1);
+            rb.transform.position = new Vector3(transform.position.x + 1, transform.position.y + 1, transform.position.z + 1);
         }
     }
 }

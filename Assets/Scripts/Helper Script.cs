@@ -1,3 +1,4 @@
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class HelperScript : MonoBehaviour
@@ -15,5 +16,17 @@ public class HelperScript : MonoBehaviour
         {
             sr.flipX = false;
         }
+    }
+
+    public bool IsFlipped()
+    {
+        SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
+
+        //Helper script code to return if the player is flipped or not
+        if (sr.flipX == true)
+        {
+            return true;
+        }
+        return false;
     }
 }
