@@ -34,17 +34,17 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetKey("a"))
         {
-            xvel = -4;
+            xvel = -8;
         }
 
         if (Input.GetKey("d"))
         {
-            xvel = 4;
+            xvel = 8;
         }
 
         if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
-            yvel = 5;
+            yvel = 8;
         }
 
         rb.linearVelocity = new Vector3(xvel, yvel, 0);
@@ -83,7 +83,7 @@ public class PlayerScript : MonoBehaviour
     }
     public bool DoRayCollisionCheck()
     {
-        float rayLength = 0.25f; //Length of the raycast
+        float rayLength = 0.8f; //Length of the raycast
 
         //casting the raycast downwards
         RaycastHit2D hit;
@@ -146,7 +146,7 @@ public class PlayerScript : MonoBehaviour
             }
 
             //setting the position close to the players position
-            rb.transform.position = new Vector3(transform.position.x + 1, transform.position.y + 1, transform.position.z + 1);
+            rb.transform.position = new Vector3(transform.position.x + 2, transform.position.y + 3, transform.position.z + 1);
         }
     }
 }

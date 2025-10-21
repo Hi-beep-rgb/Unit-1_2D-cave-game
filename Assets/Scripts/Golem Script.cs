@@ -18,7 +18,7 @@ public class GolemScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         groundLayerMask = LayerMask.GetMask("Ground");
-        xvel = 1f;
+        xvel = 2f;
         hp = 100f;
     }
 
@@ -72,7 +72,7 @@ public class GolemScript : MonoBehaviour
 
     public bool ExtendedRayCollisionCheck(float xoffs, float yoffs)
     {
-        float rayLength = 0.5f; // length of raycast
+        float rayLength = 0.8f; // length of raycast
         bool hitSomething = false;
 
         // convert x and y offset into a Vector3 
