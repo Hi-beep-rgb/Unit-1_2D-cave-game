@@ -33,12 +33,12 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetKey("a"))
         {
-            xvel = -8;
+            xvel = -7f;
         }
 
         if (Input.GetKey("d"))
         {
-            xvel = 8;
+            xvel = 7f;
         }
 
         if (Input.GetKey(KeyCode.Space) && isGrounded)
