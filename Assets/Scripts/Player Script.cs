@@ -135,18 +135,16 @@ public class PlayerScript : MonoBehaviour
             if ( helper.IsFlipped() ==  true )
             {
                 //setting the velocity of the projectile
-                rb.linearVelocity = new Vector2(-15, 0);
-
+                rb.linearVelocity = new Vector2(-20, 0);
             }
             else
             {
                 //setting the velocity of the projectile
-                rb.linearVelocity = new Vector2(15, 0);
-
+                rb.linearVelocity = new Vector2(20, 0);
             }
 
             //setting the position close to the players position
-            rb.transform.position = new Vector3(transform.position.x + 2, transform.position.y + 3, transform.position.z + 1);
+            rb.transform.position = new Vector3(transform.position.x + 2, transform.position.y + 2, transform.position.z + 1);
         }
     }
 }
