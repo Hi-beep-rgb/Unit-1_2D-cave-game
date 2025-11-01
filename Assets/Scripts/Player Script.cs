@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
@@ -11,6 +12,8 @@ public class PlayerScript : MonoBehaviour
     public GameObject weapon;
     public float hp;
     GameObject Player;
+    public Vector3 tp;
+    private GameObject col;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -116,6 +119,24 @@ public class PlayerScript : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             anim.SetBool("isJumping", true);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            /*collision.gameObject.GetComponent<PlayerScript>().tp = transform.position;*/
+            Destroy(Player);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(col.gameObject.tag == "Player")
+        {
+            /*Destroy(Player);*/
+            collision.gameObject.GetComponent<PlayerScript>().tp = transform.position;
         }
     }
 
